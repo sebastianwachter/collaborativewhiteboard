@@ -1,5 +1,6 @@
 /* global io */
-var context = document.getElementById('whiteboard').getContext('2d');
+var can = document.getElementById('whiteboard');
+var context = can.getContext('2d');
 var socket = io();
 var paint = false;
 var lastX, lastY;
@@ -22,6 +23,28 @@ $('#whiteboard').mouseup(function (e) {
 });
 
 $('#whiteboard').mouseleave(function (e) {
+  paint = false;
+});
+
+can.addEventListener('touchstart', function (e) {
+  e.preventDefault();
+  paint = true;
+  draw(e.targetTouches[0].pageX - $(this).offset().left, e.targetTouches[0].pageY - $(this).offset().top, false);
+}, false);
+
+can.addEventListener('touchmove', function (e) {
+  e.preventDefault();
+  if (paint) {
+    draw(e.targetTouches[0].pageX - $(this).offset().left, e.targetTouches[0].pageY - $(this).offset().top, true);
+  }
+}, true);
+
+can.addEventListener('touchend', function (e) {
+  e.preventDefault();
+  paint = false;
+}, false);
+
+can.addEventListener('touchcancel', function (e) {
   paint = false;
 });
 
