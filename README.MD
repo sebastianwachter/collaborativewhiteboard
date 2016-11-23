@@ -7,7 +7,7 @@ This being a proof of concept there are a lot of missing features to make this e
 * On a new connection only a empty whiteboard is shown. Only the newly (after this connection) drawn lines are getting shown
 * A color picker
 * A way to export pictures from the whiteboard
-* Touch support
+* ~~Touch support~~
 
 ## Getting started
 1. Clone the repo
