@@ -8,11 +8,13 @@ This being a proof of concept there are a lot of missing features to make this e
 * A color picker
 * A way to export pictures from the whiteboard
 * Touch support
+
 ## Getting started
 1. Clone the repo
 2. Open a terminal inside the folder
 3. Type ```npm install``` NPM will now install the modules
 4. After the installation is done type ```node app.js```. You should get a message that the server is running.
 5. Navigate a browser to ```localhost:3000``` and start drawing. Open another browser (or another tab) and watch yourself drawing. You might draw on the second screen as well.
+
 ## License
 MIT
