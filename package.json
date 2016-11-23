@@ -1,0 +1,30 @@
+{
+  "name": "whiteboard",
+  "version": "0.0.1",
+  "description": "A collaborative whiteboard using socket.io",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "whiteboard",
+    "canvas",
+    "express",
+    "socket.io"
+  ],
+  "author": "subhuman",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.14.0",
+    "pug": "^2.0.0-beta6",
+    "socket.io": "^1.6.0"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-notify": "^2.2.0",
+    "gulp-sass": "^2.3.2",
+    "gulp-uglify": "^2.0.0",
+    "gulp-uglifycss": "^1.0.6"
+  }
+}

@@ -1,0 +1,32 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+h1, h2, h3, h4, h5, p {
+  font-family: 'Montserrat', sans-serif;
+}
+
+h1 {
+  text-align: center;
+}
+
+.content {
+  max-width: 1200px;
+  width: 100%;
+  position: relative;
+  margin: 20px auto;
+}
+
+.drawArea {
+  position: relative;
+  margin: 20px auto;
+  height: 600px;
+  width: 800px;
+}
+
+canvas {
+  border: 1px solid #333;
+  border-radius: 5px;
+}

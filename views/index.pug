@@ -1,0 +1,13 @@
+html
+  head
+    link(rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat")
+    link(rel="stylesheet" type="text/css" href="./styles/style.css")
+    script(src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous")
+    script(src="/socket.io/socket.io.js")
+    title Collaborative whiteboard
+  body
+    div.content
+      h1 Draw on the area below. Watch it appear everywhere else.
+      div.drawArea
+        canvas#whiteboard(width="800" height="600")
+    script(src="./scripts/script.js")
