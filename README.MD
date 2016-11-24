@@ -6,6 +6,8 @@ So what is this project? - It is a whiteboard with which connected clients can d
 This being a proof of concept there are a lot of missing features to make this even cooler:
 * On a new connection only a empty whiteboard is shown. Only the newly (after this connection) drawn lines are getting shown
 * A color picker
+* An eraser
+* A wipe function
 * A way to export pictures from the whiteboard
 * ~~Touch support~~
 
