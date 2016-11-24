@@ -4,6 +4,7 @@ var context = can.getContext('2d');
 var socket = io();
 var paint = false;
 var lastX, lastY;
+var color = '#000000';
 
 $('#whiteboard').mousedown(function (e) {
   var x = e.pageX - $(this).offset().left;
@@ -49,15 +50,15 @@ can.addEventListener('touchcancel', function (e) {
 });
 
 function draw(x, y, dragging) {
-  socket.emit('draw', lastX, lastY, x, y, dragging);
+  socket.emit('draw', lastX, lastY, x, y, dragging, color);
   lastX = x;
   lastY = y;
 }
 
-socket.on('remoteDraw', function (remoteLastX, remoteLastY, remoteX, remoteY, remoteDragging) {
+socket.on('remoteDraw', function (remoteLastX, remoteLastY, remoteX, remoteY, remoteDragging, remoteColor) {
   if (remoteDragging) {
     context.beginPath();
-    context.strokeStyle = '#ff0000';
+    context.strokeStyle = remoteColor;
     context.lineJoin = 'round';
     context.lineWidth = 10;
     context.moveTo(remoteLastX, remoteLastY);
