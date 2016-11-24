@@ -5,6 +5,7 @@ var socket = io();
 var paint = false;
 var lastX, lastY;
 var color = '#000000';
+var penWidth = 10;
 
 $('#whiteboard').mousedown(function (e) {
   var x = e.pageX - $(this).offset().left;
@@ -49,18 +50,26 @@ can.addEventListener('touchcancel', function (e) {
   paint = false;
 });
 
+$('.settings #colorPicker').on('change', function () {
+  color = $(this).val();
+});
+
+$('.settings #sizePicker').on('change', function () {
+  penWidth = $(this).val();
+});
+
 function draw(x, y, dragging) {
-  socket.emit('draw', lastX, lastY, x, y, dragging, color);
+  socket.emit('draw', lastX, lastY, x, y, dragging, color, penWidth);
   lastX = x;
   lastY = y;
 }
 
-socket.on('remoteDraw', function (remoteLastX, remoteLastY, remoteX, remoteY, remoteDragging, remoteColor) {
+socket.on('remoteDraw', function (remoteLastX, remoteLastY, remoteX, remoteY, remoteDragging, remoteColor, remoteWidth) {
   if (remoteDragging) {
     context.beginPath();
     context.strokeStyle = remoteColor;
     context.lineJoin = 'round';
-    context.lineWidth = 10;
+    context.lineWidth = remoteWidth;
     context.moveTo(remoteLastX, remoteLastY);
     context.lineTo(remoteX, remoteY);
     context.closePath();

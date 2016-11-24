@@ -8,6 +8,17 @@ html
   body
     div.content
       h1 Draw on the area below. Watch it appear everywhere else.
+      div.settings
+        p Select a color:
+        input(type="color" id="colorPicker" defaultvalue="#000000")
+        p Select your pencil size:
+        select(id="sizePicker")
+          option(value="5") 5
+          option(value="10" selected) 10
+          option(value="15") 15
+          option(value="20") 20
+          option(value="25") 25
+          option(value="30") 30
       div.drawArea
         canvas#whiteboard(width="800" height="600")
     script(src="./scripts/script.js")

@@ -7,7 +7,8 @@ var gulp  = require('gulp'),
     concat = require('gulp-concat'),
     notify = require('gulp-notify'),
     uglifyJS = require('gulp-uglify'),
-    uglifyCSS = require('gulp-uglifycss');
+    uglifyCSS = require('gulp-uglifycss'),
+    autoprefixer = require('gulp-autoprefixer');
 
 // default task
 gulp.task('default', ['watch']);
@@ -18,6 +19,10 @@ gulp.task('build-css', () => {
     .pipe(sass())
     .pipe(concat('style.css'))
     .pipe(uglifyCSS())
+    .pipe(autoprefixer({
+      browsers: ['last 2 versions'],
+      cascade: false
+    }))
     .pipe(gulp.dest('public/styles/'))
     .pipe(notify({ message: 'CSS task complete' }));
 });
