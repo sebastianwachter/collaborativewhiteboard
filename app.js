@@ -12,8 +12,8 @@ app.get('/', (req, res) => {
 
 io.on('connection', (socket) => {
   console.log('a user connected');
-  socket.on('draw', function (lastX, lastY, x, y, dragging, color, penWidth) {
-    io.emit('remoteDraw', lastX, lastY, x, y, dragging, color, penWidth, { for: 'everyone' });
+  socket.on('draw', function (obj) {
+    io.emit('remoteDraw', obj, { for: 'everyone' });
   });
 
   socket.on('clear', function () {

@@ -63,19 +63,27 @@ $('.settings #clear').on('click', function () {
 });
 
 function draw(x, y, dragging) {
-  socket.emit('draw', lastX, lastY, x, y, dragging, color, penWidth);
+  var drawObject= {};
+  drawObject.lastX = lastX;
+  drawObject.lastY = lastY;
+  drawObject.x = x;
+  drawObject.y = y;
+  drawObject.dragging = dragging;
+  drawObject.color = color;
+  drawObject.penWidth = penWidth;
+  socket.emit('draw', drawObject);
   lastX = x;
   lastY = y;
 }
 
-socket.on('remoteDraw', function (remoteLastX, remoteLastY, remoteX, remoteY, remoteDragging, remoteColor, remoteWidth) {
-  if (remoteDragging) {
+socket.on('remoteDraw', function (remoteDrawObject) {
+  if (remoteDrawObject.dragging) {
     context.beginPath();
-    context.strokeStyle = remoteColor;
+    context.strokeStyle = remoteDrawObject.color;
     context.lineJoin = 'round';
-    context.lineWidth = remoteWidth;
-    context.moveTo(remoteLastX, remoteLastY);
-    context.lineTo(remoteX, remoteY);
+    context.lineWidth = remoteDrawObject.penWidth;
+    context.moveTo(remoteDrawObject.lastX, remoteDrawObject.lastY);
+    context.lineTo(remoteDrawObject.x, remoteDrawObject.y);
     context.closePath();
     context.stroke();
   }
