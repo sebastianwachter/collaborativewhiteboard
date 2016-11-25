@@ -20,11 +20,11 @@ $('#whiteboard').mousemove(function (e) {
   }
 });
 
-$('#whiteboard').mouseup(function (e) {
+$('#whiteboard').mouseup(function () {
   paint = false;
 });
 
-$('#whiteboard').mouseleave(function (e) {
+$('#whiteboard').mouseleave(function () {
   paint = false;
 });
 
@@ -46,7 +46,7 @@ can.addEventListener('touchend', function (e) {
   paint = false;
 }, false);
 
-can.addEventListener('touchcancel', function (e) {
+can.addEventListener('touchcancel', function () {
   paint = false;
 });
 
@@ -56,6 +56,10 @@ $('.settings #colorPicker').on('change', function () {
 
 $('.settings #sizePicker').on('change', function () {
   penWidth = $(this).val();
+});
+
+$('.settings #clear').on('click', function () {
+  socket.emit('clear');
 });
 
 function draw(x, y, dragging) {
@@ -75,4 +79,8 @@ socket.on('remoteDraw', function (remoteLastX, remoteLastY, remoteX, remoteY, re
     context.closePath();
     context.stroke();
   }
+});
+
+socket.on('remoteClear', function () {
+  context.clearRect(0, 0, can.width, can.height);
 });

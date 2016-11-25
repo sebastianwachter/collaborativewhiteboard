@@ -33,6 +33,9 @@ h1 {
       &:nth-child(3) {
         margin-left: 30px;
       }
+      &:nth-child(5) {
+        margin-left: 32px;
+      }
     }
   }
 
@@ -41,6 +44,20 @@ h1 {
     appearance: searchfield;
     width: 20px;
     background-color: white;
+  }
+
+  .button {
+    padding: 5px 15px;
+    border: 1px solid #333;
+    background-color: #dadada;
+    border-radius: 5px;
+    color: #333;
+    cursor: pointer;
+    &:hover {
+      background-color: #333;
+      color: #dadada;
+      border: 1px solid #dadada;
+    }
   }
 }
 
