@@ -7,7 +7,8 @@ html
     title Collaborative whiteboard
   body
     div.content
-      h1 Draw on the area below. Watch it appear everywhere else.
+      div.headline
+        h1 Draw on the area below. Watch it appear everywhere else.
       div.settings
         p Select a color:
         input(type="color" id="colorPicker" defaultvalue="#000000")
@@ -19,6 +20,7 @@ html
           option(value="20") 20
           option(value="25") 25
           option(value="30") 30
+        button.button#save Save
         button.button#clear Clear
       div.drawArea
         canvas#whiteboard(width="800" height="600")

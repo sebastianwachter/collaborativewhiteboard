@@ -7,6 +7,9 @@ var lastX, lastY;
 var color = '#000000';
 var penWidth = 10;
 
+context.fillStyle = '#ffffff';
+context.fillRect(0, 0, can.width, can.height);
+
 $('#whiteboard').mousedown(function (e) {
   var x = e.pageX - $(this).offset().left;
   var y = e.pageY - $(this).offset().top;
@@ -62,6 +65,11 @@ $('.settings #clear').on('click', function () {
   socket.emit('clear');
 });
 
+$('.settings #save').on('click', function () {
+  var imgData = can.toDataURL();
+  socket.emit('save', imgData);
+});
+
 function draw(x, y, dragging) {
   var drawObject= {};
   drawObject.lastX = lastX;
@@ -90,5 +98,16 @@ socket.on('remoteDraw', function (remoteDrawObject) {
 });
 
 socket.on('remoteClear', function () {
-  context.clearRect(0, 0, can.width, can.height);
+  context.fillRect(0, 0, can.width, can.height);
+});
+
+socket.on('download', function (file) {
+  console.log(file);
+  /*
+  $.ajax({
+    type: 'GET',
+    url: file,
+    async: true,
+  });
+  */
 });

@@ -3,6 +3,9 @@
 Thumbs.db
 ehthumbs.db
 
+# ignore saved images
+public/saved/
+
 # Folder config file
 Desktop.ini
 

@@ -19,6 +19,12 @@ h1 {
   margin: 20px auto;
 }
 
+.headline {
+  max-width: 800px;
+  position: relative;
+  margin: 0 auto;
+}
+
 .settings {
   position: relative;
   margin: 20px auto;
@@ -30,7 +36,7 @@ h1 {
     display: inline-block;
     &:not(:first-child) {
       margin-left: 10px;
-      &:nth-child(3) {
+      &:nth-child(3n) {
         margin-left: 30px;
       }
       &:nth-child(5) {
