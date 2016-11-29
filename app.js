@@ -29,7 +29,7 @@ io.on('connection', (socket) => {
   socket.on('save', (imgData) => {
     let rawData = imgData.replace(/^data:image\/\w+;base64,/, '');
     let buf = new Buffer(rawData, 'base64');
-    let shortLocation = `/saved/${randomString.generate(10)}.png`
+    let shortLocation = `/saved/${randomString.generate(10)}.png`;
     let location = `/public${shortLocation}`;
     fs.writeFile(__dirname + location, buf);
     socket.emit('download', shortLocation);
