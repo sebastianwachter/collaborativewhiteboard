@@ -103,6 +103,7 @@ socket.on('remoteClear', function () {
 
 socket.on('download', function (file) {
   console.log(file);
+  window.location.assign(file);
   /*
   $.ajax({
     type: 'GET',

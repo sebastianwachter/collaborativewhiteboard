@@ -12,6 +12,10 @@ app.get('/', (req, res) => {
   res.render('index');
 });
 
+app.get('/public/saved/:fileName', (req, res) => {
+  res.sendFile(`/public/saved/${req.params.fileName}`);
+});
+
 io.on('connection', (socket) => {
   console.log('a user connected');
   socket.on('draw', (obj) => {
@@ -23,10 +27,10 @@ io.on('connection', (socket) => {
   });
 
   socket.on('save', (imgData) => {
-    let rawData = imgData.replace(/^data:image\/\w+;base64,/, "");
+    let rawData = imgData.replace(/^data:image\/\w+;base64,/, '');
     let buf = new Buffer(rawData, 'base64');
-    let location = '/public/saved/' + randomString.generate(10) + '.png';
-    fs.writeFile(__dirname + location, buf);
+    let location = `/public/saved/${randomString.generate(10)}.png`;
+    fs.writeFileSync(__dirname + location, buf);
     socket.emit('download', location);
   });
 });
