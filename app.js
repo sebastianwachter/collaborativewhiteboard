@@ -13,7 +13,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/public/saved/:fileName', (req, res) => {
-  res.sendFile(`/public/saved/${req.params.fileName}`);
+  res.download(`/public/saved/${req.params.fileName}`);
 });
 
 io.on('connection', (socket) => {
@@ -31,8 +31,9 @@ io.on('connection', (socket) => {
     let buf = new Buffer(rawData, 'base64');
     let shortLocation = `/saved/${randomString.generate(10)}.png`;
     let location = `/public${shortLocation}`;
-    fs.writeFile(__dirname + location, buf);
-    socket.emit('download', shortLocation);
+    fs.writeFile(__dirname + location, buf, () => {
+      socket.emit('download', shortLocation);
+    });
   });
 });
 
