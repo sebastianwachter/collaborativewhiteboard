@@ -1,4 +1,23 @@
 /* global io */
+
+var socket = io();
+var options = {
+  id: 'whiteboard',
+  width: $('.settings #sizePicker').val(),
+  socket: socket,
+  color: $('.settings #colorPicker').val()
+};
+var wb = new WhiteBoard(options);
+
+var options2 = {
+  id: 'whiteboardGrainer',
+  width: $('.settings #sizePicker').val(),
+  socket: socket,
+  color: $('.settings #colorPicker').val()
+};
+var wb2 = new WhiteBoard(options2);
+
+/*
 var can = document.getElementById('whiteboard');
 var context = can.getContext('2d');
 var socket = io();
@@ -6,7 +25,6 @@ var paint = false;
 var lastX, lastY;
 var color = '#000000';
 var penWidth = 10;
-
 $('#whiteboard').mousedown(function (e) {
   var x = e.pageX - $(this).offset().left;
   var y = e.pageY - $(this).offset().top;
@@ -51,17 +69,15 @@ can.addEventListener('touchcancel', function () {
 });
 
 $('.settings #colorPicker').on('change', function () {
-  color = $(this).val();
+  color = $('.settings #colorPicker').val();
 });
 
 $('.settings #sizePicker').on('change', function () {
-  penWidth = $(this).val();
+  penWidth = $(.settings #sizePicker).val();
 });
-
 $('.settings #clear').on('click', function () {
   socket.emit('clear');
 });
-
 function draw(x, y, dragging) {
   var drawObject= {};
   drawObject.lastX = lastX;
@@ -75,7 +91,6 @@ function draw(x, y, dragging) {
   lastX = x;
   lastY = y;
 }
-
 socket.on('remoteDraw', function (remoteDrawObject) {
   if (remoteDrawObject.dragging) {
     context.beginPath();
@@ -92,3 +107,4 @@ socket.on('remoteDraw', function (remoteDrawObject) {
 socket.on('remoteClear', function () {
   context.clearRect(0, 0, can.width, can.height);
 });
+*/

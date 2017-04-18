@@ -4,6 +4,7 @@ html
     link(rel="stylesheet" type="text/css" href="./styles/style.css")
     script(src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous")
     script(src="/socket.io/socket.io.js")
+    script(src="./scripts/library.js")
     title Collaborative whiteboard
   body
     div.content
@@ -22,4 +23,6 @@ html
         button.button#clear Clear
       div.drawArea
         canvas#whiteboard(width="800" height="600")
+      div.drawArea
+        canvas#whiteboardGrainer(width="800" height="600")
     script(src="./scripts/script.js")
