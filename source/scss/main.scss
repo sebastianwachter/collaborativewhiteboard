@@ -64,8 +64,9 @@ h1 {
 .drawArea {
   position: relative;
   margin: 20px auto;
-  height: 600px;
-  width: 800px;
+  height: 300px;
+  width: 400px;
+  display: inline-block;
 }
 
 canvas {

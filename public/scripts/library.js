@@ -27,7 +27,7 @@ WhiteBoard.prototype.init = function (canvasID) {
   this.can.addEventListener('touchcancel', this.touchUp.bind(this), false);
 
   this.socket.on('remoteDraw', function (remoteDrawObject) {
-    if (remoteDrawObject.dragging) {
+    if (remoteDrawObject.dragging && self.canvasID === remoteDrawObject.id) {
       self.ctx.beginPath();
       self.ctx.strokeStyle = remoteDrawObject.color;
       self.ctx.lineJoin = 'round';
@@ -59,7 +59,7 @@ WhiteBoard.prototype.mouseMove = function (e) {
   }
 };
 
-WhiteBoard.prototype.mouseUp = function (e) {
+WhiteBoard.prototype.mouseUp = function () {
   this.pressed = false;
 };
 
@@ -80,7 +80,7 @@ WhiteBoard.prototype.touchMove = function (e) {
   }
 };
 
-WhiteBoard.prototype.touchUp = function (e) {
+WhiteBoard.prototype.touchUp = function () {
   this.pressed = false;
 };
 
@@ -105,6 +105,8 @@ WhiteBoard.prototype.draw = function (x, y, dragging) {
   drawObject.dragging = dragging;
   drawObject.color = this.color;
   drawObject.brushSize = this.width;
+  //drawObject.context = this.ctx;
+  drawObject.id = this.canvasID;
   this.socket.emit('draw', drawObject);
   this.lastX = x;
   this.lastY = y;

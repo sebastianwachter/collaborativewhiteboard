@@ -1,4 +1,4 @@
-/* global io */
+/* global io WhiteBoard */
 
 var socket = io();
 var options = {

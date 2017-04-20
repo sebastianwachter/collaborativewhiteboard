@@ -12,11 +12,11 @@ app.get('/', (req, res) => {
 
 io.on('connection', (socket) => {
   console.log('a user connected');
-  socket.on('draw', function (obj) {
+  socket.on('draw', (obj) => {
     io.emit('remoteDraw', obj, { for: 'everyone' });
   });
 
-  socket.on('clear', function () {
+  socket.on('clear', () => {
     io.emit('remoteClear', { for: 'everyone' });
   });
 });
