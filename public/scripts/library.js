@@ -105,7 +105,6 @@ WhiteBoard.prototype.draw = function (x, y, dragging) {
   drawObject.dragging = dragging;
   drawObject.color = this.color;
   drawObject.brushSize = this.width;
-  //drawObject.context = this.ctx;
   drawObject.id = this.canvasID;
   this.socket.emit('draw', drawObject);
   this.lastX = x;
